@@ -1,43 +1,55 @@
 <ul>
-<% for location in @location.nearbys(10) %>
-  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
-<% end %>
+    <% for location in @location.nearbys(10) %>
+    <li><%= link_to location.address, location %>
+        (<%= location.distance.round(2) %>
+        miles)</li>
+    <% end %>
 </ul><%# title "Location" %>
 
 <p>
-  <strong>Address:</strong>
-  <%= @location.address %>
+    <strong>Address:</strong>
+    <%= @location.address %>
 </p>
 <p>
-  <strong>Latitude:</strong>
-  <%= @location.latitude %>
+    <strong>Latitude:</strong>
+    <%= @location.latitude %>
 </p>
 <p>
-  <strong>Longitude:</strong>
-  <%= @location.longitude %>
+    <strong>Longitude:</strong>
+    <%= @location.longitude %>
 </p>
-
+<p>Canvas</p>
 <canvas id="myCanvas" width="640" height="640"></canvas>
-   <script>
-     var canvas = document.getElementById('myCanvas');
-     var context = canvas.getContext('2d');
-     var imageObj = new Image();
-
-     imageObj.onload = function() {
-       context.drawImage(imageObj, 69, 50);
-     };
-     imageObj.src = '<%= @location.imageurl(@location.latitude,@location.longitude,16) %>';
-   </script>
+<p>Image</p>
+<%= image_tag @location.imageurl(@location.latitude,@location.longitude,16) %>
 
 <p>
 
-  <%= link_to( edit_location_path(@location), :class=> "btn btn-info") do %>
-    <span class="glyphicon glyphicon-pencil"></span> Edit
-  <%end%> |
-  <%= link_to( @location, :confirm => 'Are you sure?', :method => :delete , :class => "btn btn-info" ) do%>
-    <span class="glyphicon glyphicon-trash"></span> Destroy
-  <%end%> |
-  <%= link_to(locations_path , :class=> "btn btn-info") do  %>
-  <span class="glyphicon glyphicon-list-alt"></span>  View All
-  <%end%>
+    <%= link_to( edit_location_path(@location), :class=> "btn btn-info") do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+    <%end%>
+    |
+    <%= link_to( @location, :confirm => 'Are you sure?', :method => :delete , :class => "btn btn-info" ) do%>
+    <span class="glyphicon glyphicon-trash"></span>
+    Destroy
+    <%end%>
+    |
+    <%= link_to(locations_path , :class=> "btn btn-info") do  %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    View All
+    <%end%>
 </p>
+
+<% content_for :document_ready do %>
+
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var imageObj = new Image();
+    $(function () {
+        imageObj.onload = function () {
+            context.drawImage(imageObj, 69, 50);
+        };
+        imageObj.src = '<%= @location.imageurl(@location.latitude,@location.longitude,16) %>';
+    });
+<% end %>
