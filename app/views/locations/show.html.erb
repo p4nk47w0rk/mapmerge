@@ -17,8 +17,17 @@
   <%= @location.longitude %>
 </p>
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %>
+<canvas id="myCanvas" width="640" height="640"></canvas>
+   <script>
+     var canvas = document.getElementById('myCanvas');
+     var context = canvas.getContext('2d');
+     var imageObj = new Image();
 
+     imageObj.onload = function() {
+       context.drawImage(imageObj, 69, 50);
+     };
+     imageObj.src = '<%= @location.imageurl(@location.latiude,@location.longitude,16) %>';
+   </script>
 
 <p>
 
