@@ -22,7 +22,13 @@
 
 <p>
 
-  <%= link_to "Edit", edit_location_path(@location) %> |
-  <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", locations_path %>
+  <%= link_to( edit_location_path(@location), :class=> "btn btn-info") do %>
+    <span class="glyphicon glyphicon-pencil"></span> Edit
+  <%end%> |
+  <%= link_to( @location, :confirm => 'Are you sure?', :method => :delete , :class => "btn btn-info" ) do%>
+    <span class="glyphicon glyphicon-trash"></span> Destroy
+  <%end%> |
+  <%= link_to(locations_path , :class=> "btn btn-info") do  %>
+  <span class="glyphicon glyphicon-list-alt"></span>  View All
+  <%end%>
 </p>
