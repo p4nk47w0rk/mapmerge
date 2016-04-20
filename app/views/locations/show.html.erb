@@ -48,7 +48,7 @@
     var imageObj = new Image();
     $(function () {
         imageObj.onload = function () {
-            context.drawImage(imageObj, 69, 50);
+            context.drawImage(imageObj, 0, 0);
         };
         imageObj.src = '<%= @location.imageurl(@location.latitude,@location.longitude,16).html_safe %>';
     });
