@@ -50,6 +50,6 @@
         imageObj.onload = function () {
             context.drawImage(imageObj, 69, 50);
         };
-        imageObj.src = '<%= @location.imageurl(@location.latitude,@location.longitude,16) %>';
+        imageObj.src = '<%= @location.imageurl(@location.latitude,@location.longitude,16).html_safe %>';
     });
 <% end %>
