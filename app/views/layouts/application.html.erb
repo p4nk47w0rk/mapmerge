@@ -141,6 +141,10 @@
 
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= yield :document_ready %>
+    <script type="text/javascript">
+        $(function(){
+            <%= yield :document_ready %>
+        });
+    </script>
   </body>
 </html>
