@@ -21,7 +21,7 @@
 <!--p>Canvas</p-->
 <!--canvas id="myCanvas" width="640" height="640"></canvas-->
 <p>Image</p>
-<%= image_tag @location.imageurl(@location.latitude,@location.longitude,18 , 'satellite','640x640').html_safe, :id => "main_image"  %>
+<%= image_tag @location.imageurl(@location.latitude,@location.longitude,@location.zoom , 'satellite','640x640').html_safe, :id => "main_image"  %>
 <div id="LargeMap"></div>
 <p>
 
@@ -45,7 +45,7 @@
 
     var lat = <%=@location.latitude %>;
     var lng = <%=@location.longitude%>;
-    var zoom = 18;
+    var zoom = <%= @location.zoom%>;
 <% end %>
 <% content_for :document_ready do %>
 
