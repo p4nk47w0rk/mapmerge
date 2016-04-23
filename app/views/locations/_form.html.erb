@@ -1,29 +1,56 @@
 <%= form_for(@location) do |f| %>
   <% if @location.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+    <!--div class="alert alert-danger" role="alert">
 
-      <ul>
-      <% @location.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+      <div id="error_explanation">
+        <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+        <ul>
+        <% @location.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div-->
+    <% content_for :document_ready do %>
+
+      $(function(){
+        <% @location.errors.full_messages.each do |message| %>
+          $.notify({
+            // options
+            message: '<%= message %>'
+            },{
+            // settings
+            type: 'danger'
+          });
+        <% end %>
+      });
+    <% end %>
   <% end %>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="field  form-group">
+      <%= f.label :address %><br>
+      <%= f.text_field :address, :class=>"form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :latitude %><br>
+      <%= f.text_field :latitude, :class=>"form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :longitude %><br>
+      <%= f.text_field :longitude, :class=>"form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <div class="actions row">
+      <div class="col-xs-6">
+        <%= link_to 'Back', locations_path, :class=> "btn btn-warning"  %>
+        <%= link_to 'Show', @location %>
+      </div>
+      <div class="col-xs-6">
+        <%= f.submit  :class=> "btn btn-success pull-right" %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>
