@@ -56,6 +56,7 @@
 
 
     $(function () {
+
         //renderMap($("#id_0"), GetTileDelta({lat: <%=@location.latitude %>,lng: <%=@location.longitude%>}, 16, 640, 640, { x: 0, y: 0 }), '640x640' , 16);
         //for(var i = 0 ; i <= 11 ; i++){
         //  renderMap($("#id_"+i), GetTileDelta({lat: <%=@location.latitude %>,lng: <%=@location.longitude%>}, 16, 640, 640, { x: 0, y: i }), '640x640' , 16);
@@ -69,5 +70,6 @@
         $(document).on('click' , '#show_large_map' , function(){
           map_setup();
         })
+
     });
 <% end %>
