@@ -71,19 +71,45 @@ function GetTileDelta(center, zoom, mapWidth, mapHeight, delta) {
     return DeltaLatLon;
 }
 
-function map_setup(){
-  $('#main_image').remove();
-  var x = 0 ;
-  for(var y = 0 ; y<= 23 ; y++){
+function tile_calculations(tile_size){
+  var tile_sum = tile_size*tile_size - 1 ;
+  var quadrant_sum = tile_sum / 4;
+  var final_pos = quadrant_sum - (quadrant_sum - ( (tile_size-1)/ 2 ))
+  return final_pos
+}
 
-    var $img = $( document.createElement('img') ,{
-      id: 'img_'+y
-    }).appendTo('#LargeMap');
-    $img.attr('class' , 'pull-left');
-    $img.attr('data-pos' , " pos-x: " + x + " pos-y: " + y)
-      y = y - x  ;
-      renderMap($img, GetTileDelta({lat: lat,lng: lng}, zoom, 400, 400, { x: x , y: y }), '400x400' , zoom);
-        x = 1 - x;
+function map_setup(){
+
+  $('#main_image,#show_large_map').remove();
+
+
+  $('#LargeMap').css({
+    'width' : (tile_size * 640) + 100
+  })
+
+
+  var final_pos = tile_calculations(tile_size);
+
+  var x_pos = final_pos * (-1);
+  var y_pos = x_pos;
+  var y_positiv = y_pos*-1;
+  var x_positiv = x_pos*-1;
+
+  for( var y = y_pos ; y <= y_positiv ; y++){
+
+    for( var x = x_pos ; x <= x_positiv ; x++){
+      console.log(x_pos)
+
+      var $img = $( document.createElement('img') ,{
+        id: 'img_'
+      }).appendTo('#LargeMap');
+
+      $img.attr('class' , 'pull-left');
+
+
+      renderMap($img, GetTileDelta({lat: lat,lng: lng}, zoom, 640, 640, { x: x , y: y }), '640x640' , zoom);
+
+    }
 
   }
 }

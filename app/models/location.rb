@@ -1,10 +1,11 @@
 class Location < ActiveRecord::Base
-  attr_accessible :address, :latitude, :longitude, :zoom
+  attr_accessible :address, :latitude, :longitude, :zoom , :tile_size
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
 
   validates :address, presence: true
   validates :zoom, presence: true
+  validates :tile_size, presence: true
 
 
   def imageurl(lat , long , zoom , map_type, map_size)

@@ -38,6 +38,11 @@
       <%= f.select :zoom, (0..20) , :class=>"form-control" %>
     </div>
     <div class="field form-group">
+      <%= f.label :tile_size %>
+      <%= f.select :tile_size, (3..20).select(&:odd?), :class=>"form-control"%>
+
+    </div>
+    <div class="field form-group">
       <%= f.label :latitude %><br>
       <%= f.text_field :latitude, :class=>"form-control" %>
     </div>
