@@ -1,65 +1,86 @@
-<%= form_for(@location) do |f| %>
-  <% if @location.errors.any? %>
-    <!--div class="alert alert-danger" role="alert">
 
-      <div id="error_explanation">
-        <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+  <%= form_for(@location, :class=> "form-horizontal") do |f| %>
+    <% if @location.errors.any? %>
+      <!--div class="alert alert-danger" role="alert">
 
-        <ul>
-        <% @location.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div-->
-    <% content_for :document_ready do %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
 
-      $(function(){
-        <% @location.errors.full_messages.each do |message| %>
-          $.notify({
-            // options
-            message: '<%= message %>'
-            },{
-            // settings
-            type: 'danger'
-          });
-        <% end %>
-      });
+          <ul>
+          <% @location.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div-->
+      <% content_for :document_ready do %>
+
+        $(function(){
+          <% @location.errors.full_messages.each do |message| %>
+            $.notify({
+              // options
+              message: '<%= message %>'
+              },{
+              // settings
+              type: 'danger'
+            });
+          <% end %>
+        });
+      <% end %>
     <% end %>
-  <% end %>
-<div class="row">
-  <div class="col-xs-6">
-    <div class="field  form-group">
-      <%= f.label :address %><br>
-      <%= f.text_field :address, :class=>"form-control" %>
-    </div>
-    <div class="field form-group">
-      <%= f.label :zoom %><br>
-      <%= f.select :zoom, (0..20) , :class=>"form-control" %>
-    </div>
-    <div class="field form-group">
-      <%= f.label :tile_size %>
-      <%= f.select :tile_size, (3..20).select(&:odd?), :class=>"form-control"%>
-
-    </div>
-    <div class="field form-group">
-      <%= f.label :latitude %><br>
-      <%= f.text_field :latitude, :class=>"form-control" %>
-    </div>
-    <div class="field form-group">
-      <%= f.label :longitude %><br>
-      <%= f.text_field :longitude, :class=>"form-control" %>
-    </div>
-
-    <div class="actions row">
-      <div class="col-xs-6">
-        <%= link_to 'Back', locations_path, :class=> "btn btn-warning"  %>
-        <%= link_to 'Show', @location %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="field  form-group">
+        <div class="row">
+          <div class="col-xs-2">
+            <%= f.label :address %><br>
+          </div>
+          <div class="col-xs-10">
+            <%= f.text_field :address, :class=>"form-control" %>
+          </div>
+        </div>
       </div>
-      <div class="col-xs-6">
-        <%= f.submit  :class=> "btn btn-success pull-right" %>
+      <div class="field form-group">
+        <div class="row">
+          <div class="col-xs-2">
+            <%= f.label :zoom %><br>
+          </div>
+          <div class="col-xs-10">
+            <%= f.select :zoom, (12..20) , :class=>"form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="field form-group">
+        <div class="row">
+          <div class="col-xs-2">
+            <%= f.label :tile_size %>
+          </div>
+          <div class="col-xs-10">
+            <%= f.select :tile_size, (3..15).select(&:odd?), :class=>"form-control"%>
+          </div>
+        </div>
+
+      </div>
+      <!--div class="field form-group">
+        <%#= f.label :latitude %><br>
+        <%#= f.text_field :latitude, :class=>"form-control" %>
+      </div>
+      <div class="field form-group">
+        <%#= f.label :longitude %><br>
+        <%#= f.text_field :longitude, :class=>"form-control" %>
+      </div-->
+
+      <div class="actions row">
+        <div class="col-xs-6">
+          <%= link_to 'Back', locations_path, :class=> "btn btn-warning"  %>
+          <%= link_to(@location, :class => "btn btn-primary")  do  %>
+            <span class="glyphicon glyphicon-map"></span> Show
+          <% end %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.submit  :class=> "btn btn-success btn-lg pull-right" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<% end %>
+  <% end %>
