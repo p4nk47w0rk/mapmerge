@@ -7,7 +7,7 @@ class CreateLocations < ActiveRecord::Migration
       t.integer :zoom
       t.integer :tile_size
       t.integer :map_size
-      
+      t.belongs_to :user
       t.timestamps null: false
     end
   end

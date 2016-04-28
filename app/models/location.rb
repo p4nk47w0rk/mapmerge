@@ -6,7 +6,7 @@ class Location < ActiveRecord::Base
   validates :address, presence: true
   validates :zoom, presence: true
   validates :tile_size, presence: true
-
+  belongs_to :user
 
   def imageurl(lat , long , zoom , map_type, map_size)
       #return "http://maps.google.com/maps/api/staticmap?size=640x640&sensor=false&zoom=#{zoom}&markers=#{lat}%2C#{long}"

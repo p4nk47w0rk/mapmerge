@@ -1,11 +1,15 @@
 <ul>
     <% for location in @location.nearbys(10) %>
-    <li><%= link_to location.address, location %>
-        (<%= location.distance.round(2) %>
-        miles)</li>
-    <% end %>
-</ul><%# title "Location" %>
+      <li>
+        <%= link_to location.address, location %>
 
+        (<%= location.distance.round(2) %>
+        miles)
+      </li>
+    <% end %>
+</ul>
+<%# title "Location" %>
+<%#= @location.user.email%>
 <p>
     <strong>Address:</strong>
     <%= @location.address %>
