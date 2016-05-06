@@ -103,11 +103,13 @@ function map_setup(){
       var $img = $( document.createElement('img') ,{
         id: 'img_'
       }).appendTo('#LargeMap');
-
+      $img.css({
+        margin: "-20px 0 0 0"
+      })
       $img.attr('class' , 'pull-left');
 
 
-      renderMap($img, GetTileDelta({lat: lat,lng: lng}, zoom, 640, 640, { x: x , y: y }), '640x640' , zoom);
+      renderMap($img, GetTileDelta({lat: lat,lng: lng}, zoom, 640, 620, { x: x , y: y }), '640x680' , zoom);
 
     }
 

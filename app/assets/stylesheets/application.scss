@@ -11,7 +11,10 @@
  * file per style scope.
  *
  */
- @import "animate.scss";
+ @import "animate";
+ @import "welcome";
+
+
 //Setup
 * {
   -webkit-box-sizing: boreder-box;

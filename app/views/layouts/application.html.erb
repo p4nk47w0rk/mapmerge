@@ -4,209 +4,43 @@
     <title>Mapmerge Online - Create simple and easy larg location Images.</title>
     <meta name="description" content="MapMerge is a simple Application to create large Images of locations via the Google Map API.">
     <meta name="keywords" content="map, merge, location images, application" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <!-- Wrap all page content here -->
     <div id="wrap">
-
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">MapMerge</a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-            <!--ul class="nav navbar-nav">
-              <!--li class="active">
-                <a href="#">Link
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li-->
-              <!--li>
-                <a href="#">Link</a>
-              </li-->
-              <!--li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="#">Action</a>
-                  </li>
-                  <li>
-                    <a href="#">Another action</a>
-                  </li>
-                  <li>
-                    <a href="#">Something else here</a>
-                  </li>
-                  <li role="separator" class="divider"></li>
-                  <li>
-                    <a href="#">Separated link</a>
-                  </li>
-                  <li role="separator" class="divider"></li>
-                  <li>
-                    <a href="#">One more separated link</a>
-                  </li>
-                </ul>
-              </li-->
-            <!--/ul-->
-            <!--form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form-->
-            <ul class="nav navbar-nav navbar-right">
-              <%if not user_signed_in?%>
-                <li>
-                  <%= link_to "Login" , new_user_session_path %>
-                </li>
-              <% end %>
-              <%if user_signed_in?%>
-                <li>
-                  <%= link_to "Logout" , destroy_user_session_path , method: :delete %>
-                </li>
-              <%end%>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  Menu
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <%= link_to "Locations" , locations_path %>
-                  </li>
-                  <li>
-                    <%= link_to "Create" , new_location_path  %>
-                  </li>
-                  <!--li>
-                    <a href="#">Something else here</a>
-                  </li>
-                  <li role="separator" class="divider"></li>
-                  <li>
-                    <a href="#">Separated link</a>
-                  </li-->
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-      </nav>
-      <!-- CONTENT
-    =================================-->
-    <%#= link_to %>
-
-    <div class="container">
-      <%= yield %>
-
+      <%= render  partial: "shared/navigation" %>
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
+    <%= render  partial: "shared/footer" %>
 
-</div>
-
-
-      <!-- /header container-->
-
-      <!-- CONTENT
-    =================================-->
-      <!--div class="container">
-
-      <div class="row">
-        <div class="col col-lg-12"><div class="well"><p>1</p></div></div>
-      </div>
-      <div class="row">
-        	<div class="col col-lg-4"><div class="well"><p>4 cols</p></div></div>
-         <div class="col col-lg-4"><div class="well"><p>4 cols</p></div></div>
-         <div class="col col-lg-4"><div class="well"><p>4 cols</p></div></div>
-      </div>
-      <div class="row">
-        <div class="col col-lg-6 col-sm-6"><div class="well"><p>6 cols, 6 small cols</p></div></div>
-       <div class="col col-lg-6 col-sm-6"><div class="well"><p>6 cols, 6 small cols</p></div></div>
-      </div>
-
-
-
-      <div class="row">
-      	<div class="col col-lg-4 col-sm-6"><div class="well">4 cols, 6 small cols</div></div>
-      	<div class="col col-lg-4 col-sm-6"><div class="well">4 cols, 6 small cols</div></div>
-      	<div class="col col-lg-4 col-sm-12"><div class="well">4 cols, 12 small cols</div></div>
-      </div>
-    </div-->
-      <!-- /CONTENT
-    =================================-->
-    <!-- end: Wrap all page content here -->
-
-    <!-- Footer
-    =================================-->
-    <div id="footer">
-      <!--div class="container">
-        <!-- MARKETING LINE>
-    		<div class="row">
-    			<div class="well">
-    				<div class="row">
-    					<div class="col-lg-8">
-    						<p class="lead ">
-
-                              Bootstrap 3 Upgrader: Get your HTML from 2.3 to 3.0! Free Bootstrap 2 =&gt; 3 migration service now alive!
-    						</p>
-
-    					</div>
-    					<div class="col-lg-4">
-    						<a class="btn btn-large btn-danger btn-block" href="http://bootstrap3.kissr.com/" target="_blank"> Start upgrade →</a>
-
-    					</div>
-
-    				</div>
-    			</div>
-    		</div>
-    		<!-- /MARKETING LINE >
-        <hr>
-
-      </div-->
-    </div>
-    <!-- /Footer
-    =================================-->
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript">
       <%= yield :var_block %>
-      $(function () {
-        <%= yield :document_ready %>
-      });
+        $(function () {
+          <%= yield :document_ready %>
+        });
       <% if notice.present? %>
 
 
-      $(function(){
+        $(function(){
 
-        $.notify({
-          // options
-          message: '<%= notice %>'
-        },{
-          // settings
-          type: 'success'
+          $.notify({
+            // options
+            message: '<%= notice %>'
+          },{
+            // settings
+            type: 'success'
+          });
         });
 
-      });
-
-      <% end%>
+      <% end %>
     </script>
-
-
-    <p class="alert"><%= alert %></p>
   </body>
 </html>
