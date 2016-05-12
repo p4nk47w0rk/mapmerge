@@ -1,5 +1,6 @@
-var MERCATOR_RANGE = 256;
 
+var MERCATOR_RANGE = 256;
+var $myCanvas;
 function bound(value, opt_min, opt_max) {
     if (opt_min != null) value = Math.max(value, opt_min);
     if (opt_max != null) value = Math.min(value, opt_max);
@@ -52,10 +53,27 @@ MercatorProjection.prototype.fromPointToLatLng = function(point) {
     };
 };
 
-function renderMap($image, LatLng, size , zoom ) {
+function renderMap($image, x_counter,y_counter,LatLng, size , zoom ) {
     //var img_src =  "http:\/\/maps.google.com\/maps\/api\/staticmap?maptype=satellite&size="+size+"&sensor=false&zoom="+zoom+"&markers=" + LatLng.lat + "%2C" +LatLng.lng ;
-    var img_src =  "https:\/\/maps.googleapis.com\/maps\/api\/staticmap?maptype=satellite&center=" + LatLng.lat + "," +LatLng.lng+"&zoom="+zoom+"&size="+size;
-    $image.attr("src", img_src );
+    //var img_src =  "https:\/\/maps.googleapis.com\/maps\/api\/staticmap?maptype=satellite&center=" + LatLng.lat + "," +LatLng.lng+"&zoom="+zoom+"&size="+size;
+    //$image.attr("src", img_src );
+
+
+    var canvas = document.getElementById('LargeCanvasMap');
+    var context = canvas.getContext('2d');
+    var imageObj = new Image();
+
+    imageObj.onload = function() {
+      console.log(x_counter  + "  ::  " + y_counter)
+        context.drawImage(imageObj,640*x_counter,620*y_counter);
+    };
+    imageObj.src = "https:\/\/maps.googleapis.com\/maps\/api\/staticmap?maptype=satellite&center=" + LatLng.lat + "," +LatLng.lng+"&zoom="+zoom+"&size="+size;
+    //var img = document.getElementById('img_'+ x_counter+'_'+y_counter)
+
+      //console.log(640*x_counter  + "  :  " + 620*y_counter )
+      //ctx.drawImage(img,640*x_counter,620*y_counter);
+
+
 
 }
 
@@ -86,6 +104,12 @@ function map_setup(){
   $('#LargeMap').css({
     'width' : (tile_size * 640) + 100
   })
+  $('#LargeCanvasMap').attr({
+    'width' : (tile_size * 640) ,
+    'height' : (tile_size * 640) - 100
+  })
+
+
 
 
   var final_pos = tile_calculations(tile_size);
@@ -94,24 +118,28 @@ function map_setup(){
   var y_pos = x_pos;
   var y_positiv = y_pos*-1;
   var x_positiv = x_pos*-1;
+  var x_counter = 0;
+  var y_counter = 0;
+
+
 
   for( var y = y_pos ; y <= y_positiv ; y++){
-
+    x_counter = 0 ;
     for( var x = x_pos ; x <= x_positiv ; x++){
-      console.log(x_pos)
 
-      var $img = $( document.createElement('img') ,{
-        id: 'img_'
-      }).appendTo('#LargeMap');
-      $img.css({
-        margin: "-20px 0 0 0"
-      })
-      $img.attr('class' , 'pull-left');
+      var $img = $( "<img />" );//.appendTo('#LargeMap');
 
-
-      renderMap($img, GetTileDelta({lat: lat,lng: lng}, zoom, 640, 620, { x: x , y: y }), '640x680' , zoom);
-
+      // $img
+      //   .css({
+      //     margin: "-20px 0 0 0",
+      //   })
+      //   .attr('id' , 'img_'+ x_counter+'_'+y_counter)
+      // $img.attr('class' , 'pull-left');
+      renderMap($img, x_counter,y_counter, GetTileDelta({lat: lat,lng: lng}, zoom, 640, 620, { x: x , y: y }), '640x680' , zoom);
+      console.log(x +"::" +  y)
+      x_counter++;
     }
+    y_counter++;
 
   }
 }

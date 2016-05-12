@@ -27,6 +27,7 @@
 <p>Image</p>
 <%= image_tag @location.imageurl(@location.latitude,@location.longitude,@location.zoom , 'satellite','640x640').html_safe, :id => "main_image"  %>
 <div id="LargeMap"></div>
+<canvas id="LargeCanvasMap"></canvas>
 <p>
 
     <%= link_to( edit_location_path(@location), :class=> "btn btn-info") do %>
