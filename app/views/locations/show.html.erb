@@ -27,7 +27,7 @@
 <p>Image</p>
 <%= image_tag @location.imageurl(@location.latitude,@location.longitude,@location.zoom , 'satellite','640x640').html_safe, :id => "main_image"  %>
 <div id="LargeMap"></div>
-<canvas id="LargeCanvasMap"></canvas>
+<canvas id="LargeCanvasMap" style="display: none;"></canvas>
 <p>
 
     <%= link_to( edit_location_path(@location), :class=> "btn btn-info") do %>
@@ -55,27 +55,4 @@
 <% end %>
 <% content_for :document_ready do %>
 
-    //var canvas = document.getElementById('myCanvas');
-    //var context = canvas.getContext('2d');
-    //var imageObj = new Image();
-
-
-
-    $(function () {
-
-        //renderMap($("#id_0"), GetTileDelta({lat: <%=@location.latitude %>,lng: <%=@location.longitude%>}, 16, 640, 640, { x: 0, y: 0 }), '640x640' , 16);
-        //for(var i = 0 ; i <= 11 ; i++){
-        //  renderMap($("#id_"+i), GetTileDelta({lat: <%=@location.latitude %>,lng: <%=@location.longitude%>}, 16, 640, 640, { x: 0, y: i }), '640x640' , 16);
-        //}
-
-        //imageObj.onload = function () {
-        //    context.drawImage(imageObj, 0, 0);
-        //};
-
-        //imageObj.src = '<%= @location.imageurl(@location.latitude,@location.longitude,16,'satellite','640x640').html_safe %>';
-        $(document).on('click' , '#show_large_map' , function(){
-          map_setup();
-        })
-
-    });
 <% end %>

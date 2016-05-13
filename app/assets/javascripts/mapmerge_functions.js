@@ -135,11 +135,21 @@ function map_setup(){
       //   })
       //   .attr('id' , 'img_'+ x_counter+'_'+y_counter)
       // $img.attr('class' , 'pull-left');
+
+
+
       renderMap($img, x_counter,y_counter, GetTileDelta({lat: lat,lng: lng}, zoom, 640, 620, { x: x , y: y }), '640x680' , zoom);
       console.log(x +"::" +  y)
       x_counter++;
     }
     y_counter++;
-
   }
+
+  $("#LargeCanvasMap").show();
 }
+
+$(function () {
+    $(document).on('click' , '#show_large_map' , function(){
+      map_setup();
+    })
+});
