@@ -11,11 +11,9 @@
  * file per style scope.
  *
  */
- @import "animate";
- @import "welcome";
-
-
+//= require_tree .
 //Setup
+
 * {
   -webkit-box-sizing: boreder-box;
   -moz-box-sizing: boreder-box;

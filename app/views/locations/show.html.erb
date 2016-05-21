@@ -26,8 +26,11 @@
 <!--canvas id="myCanvas" width="640" height="640"></canvas-->
 <p>Image</p>
 <%= image_tag @location.imageurl(@location.latitude,@location.longitude,@location.zoom , 'satellite','640x640').html_safe, :id => "main_image"  %>
-<div id="LargeMap"></div>
-<canvas id="LargeCanvasMap"></canvas>
+
+<div id="MapContainer" class="hidden">
+
+</div>
+
 <p>
 
     <%= link_to( edit_location_path(@location), :class=> "btn btn-info") do %>
@@ -73,9 +76,7 @@
         //};
 
         //imageObj.src = '<%= @location.imageurl(@location.latitude,@location.longitude,16,'satellite','640x640').html_safe %>';
-        $(document).on('click' , '#show_large_map' , function(){
-          map_setup();
-        })
+
 
     });
 <% end %>
