@@ -103,13 +103,15 @@ function map_setup(){
     for( var x = x_pos ; x <= x_positiv ; x++){
 
 
+
       renderMap(x_counter,y_counter, GetTileDelta({lat: lat,lng: lng}, zoom, 640, 620, { x: x , y: y }), '640x680' , zoom);
+
       console.log(x +"::" +  y)
       x_counter++;
     }
     y_counter++;
-
   }
+
   $map = $('#MapContainer');
   $map.append(canvas).removeClass('hidden');;
   $(canvas).css({

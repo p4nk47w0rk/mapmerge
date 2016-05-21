@@ -22,14 +22,15 @@
     <strong>Longitude:</strong>
     <%= @location.longitude %>
 </p>
-<!--p>Canvas</p-->
-<!--canvas id="myCanvas" width="640" height="640"></canvas-->
+
 <p>Image</p>
 <%= image_tag @location.imageurl(@location.latitude,@location.longitude,@location.zoom , 'satellite','640x640').html_safe, :id => "main_image"  %>
+
 
 <div id="MapContainer" class="hidden">
 
 </div>
+
 
 <p>
 
@@ -50,33 +51,8 @@
 </p>
 <button class="btn btn-success" id="show_large_map">Show Large Map</button>
 <% content_for :var_block do %>
-
     var lat = <%=@location.latitude %>;
     var lng = <%=@location.longitude%>;
     var zoom = <%= @location.zoom%>;
     var tile_size = <%= @location.tile_size%>;
-<% end %>
-<% content_for :document_ready do %>
-
-    //var canvas = document.getElementById('myCanvas');
-    //var context = canvas.getContext('2d');
-    //var imageObj = new Image();
-
-
-
-    $(function () {
-
-        //renderMap($("#id_0"), GetTileDelta({lat: <%=@location.latitude %>,lng: <%=@location.longitude%>}, 16, 640, 640, { x: 0, y: 0 }), '640x640' , 16);
-        //for(var i = 0 ; i <= 11 ; i++){
-        //  renderMap($("#id_"+i), GetTileDelta({lat: <%=@location.latitude %>,lng: <%=@location.longitude%>}, 16, 640, 640, { x: 0, y: i }), '640x640' , 16);
-        //}
-
-        //imageObj.onload = function () {
-        //    context.drawImage(imageObj, 0, 0);
-        //};
-
-        //imageObj.src = '<%= @location.imageurl(@location.latitude,@location.longitude,16,'satellite','640x640').html_safe %>';
-
-
-    });
 <% end %>
