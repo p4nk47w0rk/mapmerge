@@ -1,44 +1,76 @@
-<h4>List of existing Locations.</h4>
-<div class="row">
-  <div class="col-xs-4">Adresse</div>
-  <div class="col-xs-2">Latitude</div>
-  <div class="col-xs-2">Longitude</div>
-  <div class="col-xs-4"></div>
-</div>
-
-
-
-    <% @locations.each do |location| %>
-    <div class="row">
-        <div class="col-xs-4">
-          <%= location.address %>
-        </div>
-        <div class="col-xs-2">
-          <%= location.latitude %>
-        </div>
-        <div class="col-xs-2">
-          <%= location.longitude %>
-        </div>
-        <div class="col-xs-4">
-
-
-          <%= link_to(location, :class => "btn btn-info") do %>
-            <span class="glyphicon glyphicon-picture"></span> Show
-          <%end %>
-
-          <%= link_to(edit_location_path(location) , :class => "btn btn-info")  do %>
-             <span class="glyphicon glyphicon-pencil"></span> Edit
-          <% end %>
-
-          <%= link_to( location, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-info") do %>
-              <span class="glyphicon glyphicon-trash"></span>Destroy
-          <% end %>
-        </div>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h4>List of existing Locations.</h4>
     </div>
-    <% end %>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Adresse</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>
+                        <div class="pull-right">
+                            Actions
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @locations.each_with_index do |location, idx| %>
+                    <tr>
 
-<br>
+                        <td><%= location.address %></td>
+                        <td><%= location.latitude %></td>
+                        <td><%= location.longitude %></td>
+                        <td>
+                            <a href="#" class="thumbnail" data-toggle="modal" data-target="#mymodal_<%= idx%>">
+                              <%= image_tag location.imageurl(location.latitude,location.longitude,location.zoom , 'satellite','120x120').html_safe, :id => "main_image"  %>
+                            </a>
+                        </td>
+                        <td>
+                            <div class="pull-right">
+                                <%= link_to(location, :class => "btn btn-success") do %>
+                                <span class="glyphicon glyphicon-picture"></span>
+                                Show
+                                <%end %>
 
-<%= link_to(new_location_path, :class => "btn btn-info btn-lg")  do  %>
-  <span class="glyphicon glyphicon-map-marker"></span> New Location
-<% end %>
+                                <%= link_to(edit_location_path(location) , :class => "btn btn-info")  do %>
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                Edit
+                                <% end %>
+
+                                <%= link_to( location, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger") do %>
+                                    <span class="glyphicon glyphicon-trash"></span>Destroy
+                                <% end %>
+                            </div>
+                            <div id="mymodal_<%= idx %>"class="modal fade" tabindex="-1" role="dialog">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Location Preview</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <%= image_tag location.imageurl(location.latitude,location.longitude,location.zoom , 'satellite','480x480').html_safe, :id => "main_image"  %>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  </div>
+                                </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                        </td>
+                    </tr>
+
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer clearfix">
+        <%= link_to(new_location_path, :class => "btn btn-info btn-lg pull-right")  do  %>
+        <span class="glyphicon glyphicon-map-marker"></span>
+        New Location
+        <% end %>
+    </div>
+</div>

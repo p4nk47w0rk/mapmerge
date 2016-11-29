@@ -1,13 +1,12 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-body{
-  .jumbotron{
-    background: transparent;
+.jumbotron{
+    background-color: transparent;
+    height: 70vh;
     &::after {
       content: "";
-      background: transparent url("../images/world_map.jpg") center center no-repeat;
+      background-image:  url("../images/world_map.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
       background-size: cover;
       opacity: 0.5;
       top: 0;
@@ -17,5 +16,11 @@ body{
       position: absolute;
       z-index: -1;
     }
-  }
+}
+.definitions{
+    background: #6aad56;
+    padding: 50px 0;
+    .panel{
+        height:150px;
+    }
 }

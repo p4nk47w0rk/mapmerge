@@ -1,17 +1,7 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- */
-//= require_tree .
+ @import "frontend/frontend";
+ @import "locations";
+ @import "welcome";
+
 //Setup
 
 * {
@@ -19,6 +9,7 @@
   -moz-box-sizing: boreder-box;
   box-sizing: boreder-box;
 }
+
 /* Sticky footer styles
   -------------------------------------------------- */
 body,
@@ -55,13 +46,14 @@ html {
 /* Custon styles */
 .jumbotron {
   padding: 100px 60px 80px;
-  background: #b94a48;
   color: #ffffff;
   min-height: 400px;
+  p{
+     margin: 20px auto;
+  }
 }
-.jumbotron p {
-  margin: 20px auto;
-}
+
+
 [data-notify="progressbar"] {
   margin-bottom: 0;
   position: absolute;

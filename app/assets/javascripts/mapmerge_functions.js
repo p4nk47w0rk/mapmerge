@@ -130,9 +130,9 @@ $(function(){
     })
     context = canvas.getContext('2d');
 
-    $(document).on('click' , '#show_large_map' , function(){
-        $('#main_image,#show_large_map').remove();
 
-        map_setup()
-    })
+    $('#main_image,#show_large_map').remove();
+
+    map_setup()
+
 })

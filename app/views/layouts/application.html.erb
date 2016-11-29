@@ -5,18 +5,19 @@
     <title>Mapmerge Online - Create simple and easy larg location Images.</title>
     <meta name="description" content="MapMerge is a simple Application to create large Images of locations via the Google Map API.">
     <meta name="keywords" content="map, merge, location images, application" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Josefin+Sans" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <div id="wrap">
-      <%= render  partial: "shared/navigation" %>
-      <div class="container">
+        <%= render  partial: "shared/navigation" %>
         <%= yield %>
-      </div>
     </div>
+
     <%= render  partial: "shared/footer" %>
 
 

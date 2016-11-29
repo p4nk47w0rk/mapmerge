@@ -1,3 +1,43 @@
+
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        Large Map
+    </div>
+    <div class="panel-body">
+        <div class="col-md-6">
+                <strong>Address:</strong>
+                <%= @location.address %>
+                <strong>Latitude:</strong>
+                <%= @location.latitude %>
+                <strong>Longitude:</strong>
+                <%= @location.longitude %>
+        </div>
+        <div class="col-md-6">
+                <%= link_to( edit_location_path(@location), :class=> "btn btn-info") do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                Edit
+                <%end%>
+                |
+                <%= link_to( @location, :confirm => 'Are you sure?', :method => :delete , :class => "btn btn-info" ) do%>
+                <span class="glyphicon glyphicon-trash"></span>
+                Destroy
+                <%end%>
+                |
+                <%= link_to(locations_path , :class=> "btn btn-info") do  %>
+                <span class="glyphicon glyphicon-list-alt"></span>
+                View All
+                <%end%>
+        </div>
+        <div class="col-md-12">
+            <div id="MapContainer" class="hidden"></div>
+        </div>
+    </div>
+</div>
+
+<%# title "Location" %>
+<%#= @location.user.email%>
+
 <ul>
     <% for location in @location.nearbys(10) %>
       <li>
@@ -8,48 +48,7 @@
       </li>
     <% end %>
 </ul>
-<%# title "Location" %>
-<%#= @location.user.email%>
-<p>
-    <strong>Address:</strong>
-    <%= @location.address %>
-</p>
-<p>
-    <strong>Latitude:</strong>
-    <%= @location.latitude %>
-</p>
-<p>
-    <strong>Longitude:</strong>
-    <%= @location.longitude %>
-</p>
 
-<p>Image</p>
-<%= image_tag @location.imageurl(@location.latitude,@location.longitude,@location.zoom , 'satellite','640x640').html_safe, :id => "main_image"  %>
-
-
-<div id="MapContainer" class="hidden">
-
-</div>
-
-
-<p>
-
-    <%= link_to( edit_location_path(@location), :class=> "btn btn-info") do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
-    <%end%>
-    |
-    <%= link_to( @location, :confirm => 'Are you sure?', :method => :delete , :class => "btn btn-info" ) do%>
-    <span class="glyphicon glyphicon-trash"></span>
-    Destroy
-    <%end%>
-    |
-    <%= link_to(locations_path , :class=> "btn btn-info") do  %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    View All
-    <%end%>
-</p>
-<button class="btn btn-success" id="show_large_map">Show Large Map</button>
 <% content_for :var_block do %>
     var lat = <%=@location.latitude %>;
     var lng = <%=@location.longitude%>;
