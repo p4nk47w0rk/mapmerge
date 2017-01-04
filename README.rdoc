@@ -4,7 +4,7 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-[![Code Climate](https://codeclimate.com/github/p4nk47w0rk/mapmerge/badges/gpa.svg)](https://codeclimate.com/github/p4nk47w0rk/mapmerge)
+{<img src="https://codeclimate.com/github/p4nk47w0rk/mapmerge/badges/gpa.svg" />}[https://codeclimate.com/github/p4nk47w0rk/mapmerge]
 
 Things you may want to cover:
 
