@@ -29,7 +29,7 @@ window.fbAsyncInit = ->
         FBDesc = 'TestSharing for a Superduper Facebook App.'
         FBTitle = 'TestSharing'
         FBLink = "#{location.href}?fb_share=1"
-        FBPic = "../images/world_map.jpg"
+        FBPic = "https://mapmerge-online.herokuapp.com/images/world_map.jpg"
         # Open FB share popup
         FB.ui {
             method: 'share_open_graph'
