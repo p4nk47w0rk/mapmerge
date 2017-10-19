@@ -2,35 +2,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mapmerge Online - Create simple and easy larg location Images.</title>
+    <title>
+        Mapmerge Online - Create simple and easy larg location Images.
+        <%= t'.check' %>
+    </title>
     <meta name="description" content="MapMerge is a simple Application to create large Images of locations via the Google Map API.">
     <meta name="keywords" content="map, merge, location images, application" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Josefin+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <div id="wrap">
         <%= render  partial: "shared/navigation" %>
-        <%= yield %>
+            <%= yield %>
     </div>
 
     <%= render  partial: "shared/footer" %>
 
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
     <script type="text/javascript">
       <%= yield :var_block %>
         $(function () {
           <%= yield :document_ready %>
         });
       <% if notice.present? %>
-
-
         $(function(){
 
           $.notify({

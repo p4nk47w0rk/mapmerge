@@ -29,34 +29,34 @@
       <% end %>
     <% end %>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col">
       <div class="field  form-group">
         <div class="row">
-          <div class="col-xs-2">
+          <div class="col">
             <%= f.label :address %><br>
           </div>
-          <div class="col-xs-10">
-            
+          <div class="col">
+
             <%= f.text_field :address, :class=>"form-control" %>
           </div>
         </div>
       </div>
       <div class="field form-group">
         <div class="row">
-          <div class="col-xs-2">
+          <div class="col">
             <%= f.label :zoom %><br>
           </div>
-          <div class="col-xs-10">
+          <div class="col">
             <%= f.select :zoom, (12..20) , :class=>"form-control" %>
           </div>
         </div>
       </div>
       <div class="field form-group">
         <div class="row">
-          <div class="col-xs-2">
+          <div class="col">
             <%= f.label :tile_size %>
           </div>
-          <div class="col-xs-10">
+          <div class="col">
             <%= f.select :tile_size, (3..15).select(&:odd?), :class=>"form-control"%>
           </div>
         </div>
@@ -72,13 +72,13 @@
       </div-->
 
       <div class="actions row">
-        <div class="col-xs-6">
+        <div class="col">
           <%= link_to 'Back', locations_path, :class=> "btn btn-warning"  %>
           <%= link_to(@location, :class => "btn btn-primary")  do  %>
             <span class="glyphicon glyphicon-map"></span> Show
           <% end %>
         </div>
-        <div class="col-xs-6">
+        <div class="col">
           <%= f.submit  :class=> "btn btn-success btn-lg pull-right" %>
         </div>
       </div>

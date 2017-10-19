@@ -1,11 +1,11 @@
-<div class="row">
-    <div class="col-md-6">
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                Edit <%= resource_name.to_s.humanize %>
-            </div>
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-                <div class="panel-body">
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col">
+            <div class="card ">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <div class="card-body">
+                    <b>Edit <%= resource_name.to_s.humanize %></b>
                     <%= devise_error_messages! %>
 
                     <div class="field form-group">
@@ -13,7 +13,7 @@
                         <%= f.email_field :email, autofocus: true %>
                     </div>
                     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
                     <% end %>
                     <div class="field form-group">
                         <%= f.label :first_name %><br />
@@ -41,28 +41,23 @@
 
 
                 </div>
-                <div class="panel-footer clearfix">
+                <div class="card-footer clearfix">
                     <div class="actions pull-right">
                         <%= f.submit "Update", class: "btn btn-success" %>
                     </div>
                 </div>
-            <% end %>
-        </div>
-
-    </div>
-    <div class="col-md-6">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                Cancel my account
+                <% end %>
             </div>
-            <div class="panel-body">
-                <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <b>Cancel my account</b>
+                    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+                </div>
             </div>
         </div>
 
-
-
     </div>
+    <br /><br />
 </div>
-
-<%= link_to "Back", :back , class: "btn btn-warning"%>

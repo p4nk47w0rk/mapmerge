@@ -1,48 +1,43 @@
 <div class="container">
+    <br />
     <div class="jumbotron">
-        <div class="row text-center">
-            <div class="col col-lg-12 col-sm-12">
-                <h1 class="">MapMerge</h1>
-                <p>Create simple and easy large map images.</p>
-                <%= link_to(  locations_path , :class => "btn btn-success btn-lg" ) do  %>
-                <span class="glyphicon glyphicon-map"></span> Start Here
-                <% end %>
-            </div>
-        </div>
+      <h1 class="display-3">MapMerge - Online</h1>
+      <p class="lead">Create simple and easy large map images.</p>
+      <p class="lead">
+        <%= link_to(  locations_path , class: "btn btn-success btn-lg pull-right", role: 'button' ) do  %>
+            <span class="glyphicon glyphicon-map"></span> Start Here
+        <% end %>
+      </p>
     </div>
+    <br />
 </div>
 <div class="definitions">
     <div class="container">
-        <div class="row ">
-            <div class="col-md-4">
-                <div class="panel panel-success">
-                    <div class="panel-heading ">
-                        What is MapMerge
-                    </div>
-                    <div class="panel-body">
+        <div class="row row-eq-height">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <b>What is MapMerge</b>
+                        <br /><br />
                         <p>Mapmerge is a free Google Maps based tool to create Large Location Maps which are used in architecture office`s. Architects use such Maps to plan, design and create things which only can could be understood by architects. :P </p>
                     </div>
                 </div>
-
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-success">
-                    <div class="panel-heading ">
-                        How to use Mapmerge?
-                    </div>
-                    <div class="panel-body">
-
+            <div class="col">
+                <div class="card card-success">
+                    <div class="card-body">
+                        <b>How to use Mapmerge?</b>
+                        <br /><br />
                         <p>Just click on the map and configurate your location settings (zoomfaktor, tiles ,etc...) or choose a location by typing the address in the search fields.</p>
                     </div>
                 </div>
 
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-success">
-                    <div class="panel-heading ">
-                        Why YOU should use MapMerge?
-                    </div>
-                    <div class="panel-body">
+            <div class="col">
+                <div class="card card-success">
+                    <div class="card-body">
+                        <b>Why YOU should use MapMerge?</b>
+                        <br /><br />
                         <p>Just to save houers of work in Photoshop. </p>
                     </div>
                 </div>
