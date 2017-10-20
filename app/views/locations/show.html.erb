@@ -69,7 +69,10 @@
     </div>
     <br />
 </div>
-
+<input type="text" id="lat" hidden value="<%=@location.latitude %>">
+<input type="text" id="lng" hidden value="<%=@location.longitude %>">
+<input type="text" id="zoom" hidden value="<%=@location.zoom %>">
+<input type="text" id="tile_size" hidden value="<%=@location.tile_size %>">
 <% content_for :var_block do %>
     var lat = <%=@location.latitude %>;
     var lng = <%=@location.longitude%>;
