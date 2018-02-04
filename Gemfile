@@ -59,6 +59,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'es6-rails'
+
 group :production do
   gem 'rails_12factor'
   # Use postgresql as the database for Active Record
